@@ -103,7 +103,7 @@ window.onload = function() {
     }
     map.entities.push(pushpin);
     Microsoft.Maps.Events.addHandler(pushpin, 'mouseover', updateMenu);
-    //Microsoft.Maps.Events.addHandler(pushpin, 'mouseout', updateMenu);
+    Microsoft.Maps.Events.addHandler(pushpin, 'click', updateMenu);
   }
 
   Microsoft.Maps.loadModule('Microsoft.Maps.HeatMap', function () {
