@@ -43,7 +43,7 @@ window.onload = function() {
     credentials: 'Asmd15OlhpdjArghMT1ycEvtCYiXMkL2Syp3DO0xxafdxG5JyWEURj2hCxmLNy3s',
     center: new window.Microsoft.Maps.Location(23.5, 83),
     maxZoom: 6,
-    minZoom: 5,
+    minZoom: 4,
     zoom: 5,
     enableDrag:false,
     showMapTypeSelector: false,
