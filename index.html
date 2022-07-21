@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="data.json"></script>
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' 
+            async defer></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="place-data">
+            <a id="place_name" style="font-size: 1.75em;">India</a><br>
+            <a id="cordinates"style="font-size: small;"></a>
+        </div>
+    </nav>
+    <div class="map-holder">
+        <div id="plotMap" class="map"></div> 
+        <div id="toolbar" class="toolbar">
+            <!-- <a id="place" style="flex: 0 0 100%; text-align: center; margin-top:10px;"></a> -->
+            <div id="source_list" class="source-list">
+                <div class="source-logo" id="temp_logo"></div>
+            </div>
+            <div id="news_list" class="news-list">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
