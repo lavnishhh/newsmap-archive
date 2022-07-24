@@ -123,10 +123,7 @@ window.onload = function() {
     map.layers.insert(heatmap);
 });
 }
-const source_logo_template = `
-<div>
-  <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
-</div>`
+const source_logo_template = `<div><div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div></div>`
 
 const news_item_template = `<div class="news-item"><div><a href="{news-url}" target="_blank"}><img target="_blank" src="{image-url}"></a></div><a href="{news-url}" target="_blank">{title}</a></div>`
 function updateMenu(e){
