@@ -42,7 +42,7 @@
         border-radius: 10px;
     }
     
-    .news-item > p{
+    .news-item > a{
         margin: 0px;
         font-size: 0.9em;
         word-wrap: break-word;
