@@ -78,7 +78,12 @@ window.onload = function() {
     }
   });
 
-  const infobox_html_template = '<div id="infoboxText" style="background-color:rgba(208,208,205,0.8); border-radius:15px; width:400px; height:400px; padding: 10px;"><div id="source-list" style = "overflow-y: auto;"></div>{source-list}</div>';
+  const infobox_html_template =
+        `<div id="infoboxText" style="background-color:rgba(208,208,205,0.8); border-radius:15px; width:400px; height:400px; padding: 10px;">
+        <div id="source-list" style = "overflow-y: auto;">
+        </div>
+        {source-list}
+        </div>`;
 
   for(const [place, data] of Object.entries(pins)){
     var infobox_source_html = '{source-logo}'
@@ -120,9 +125,21 @@ window.onload = function() {
     map.layers.insert(heatmap);
 });
 }
-const source_logo_template = '<div><div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div></div>'
+const source_logo_template = 
+`<div>
+  <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
+</div>`
 
-const news_item_template = '<div class="news-item"><div><a href="{news-url}" target="_blank"}><img target="_blank" src="{image-url}"></a></div><a href="{news-url}" target="_blank">{title}</a></div>'
+const news_item_template = 
+`<div class="news-item">
+<div>
+    <a href="{news-url}" target="_blank"}>
+      <img target="_blank" src="{image-url}">
+    </a>
+</div>
+<a href="{news-url}" target="_blank">{title}</a>
+</div>`
+
 function updateMenu(e){
   if(e.target.metadata){
     updateLinkMenu()
