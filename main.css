@@ -60,7 +60,7 @@ html,body{
     border-radius: 20px;
 }
 
-.news-item > div > img{
+.news-item > div > a > img{
     width: 100%;
     border-radius: 10px;
 }
