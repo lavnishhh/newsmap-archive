@@ -128,8 +128,7 @@ const source_logo_template = `
   <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
 </div>`
 
-const news_item_template = 
-`<div class="news-item">
+const news_item_template = `<div class="news-item">
 <div>
     <a href="{news-url}" target="_blank"}>
       <img target="_blank" src="{image-url}">
