@@ -159,15 +159,16 @@ function updateLinkMenu(self,data_ref){
   source = data_ref.split('-')[1]
   place = data_ref.split('-')[0]
   json_data[source_index[source]].data[place].links.forEach(link_data => {
-    var link = link_data.title
-    if (link.length > 65){
-      link = link.substring(0,65) + ". . ."
+    var title= link_data.title
+    console.log()
+    if(title.length > 65 && screen.width<770){
+      title = title.substring(1,65) + '. . .'
     }
     link_list_item.innerHTML += news_item_template
     .replace('{news-url}',link_data.url)
     .replace('{news-url}',link_data.url)
     .replace('{image-url}',link_data.img)
-    .replace('{title}',link)
+    .replace('{title}',title)
   })
 }
 
