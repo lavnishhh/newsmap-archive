@@ -23,12 +23,19 @@
     <div class="map-holder">
         <div id="plotMap" class="map"></div> 
         <div id="toolbar" class="toolbar">
-            <!-- <a id="place" style="flex: 0 0 100%; text-align: center; margin-top:10px;"></a> -->
-            <div id="source_list" class="source-list">
+            <div id="source-type" class="source-type">
+                <div id="sources-info" class="sources-info"></div>
+            </div>
+
+            <div id="map-info-collapse" class="arrow arrow-open" onclick="collapseSwitch(this,'source-type','loc-type')"></div>
+            <div id='loc-type' class='loc-type' style="display: none;">
+              <div id="source_list" class="source-list">
                 <div class="source-logo" id="temp_logo"></div>
+                </div>
+                <div id="news_list" class="news-list">
+                </div>  
             </div>
-            <div id="news_list" class="news-list">
-            </div>
+            
         </div>
     </div>
 </body>
