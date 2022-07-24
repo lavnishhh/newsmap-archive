@@ -8,13 +8,14 @@ async function fetchData() {
   const response = await fetch('./data.json');
   json_data = await response.json();
   var index = 0
+  var sources_info = document.getElementById('sources-info')
   json_data.forEach(source => {
+      sources_info.innerHTML += source_logo_template.replace('{image-url}',source.image)
       news_sources[source.source_tag] = {'source-tag':source['source_tag'], 'image-url':source['image']};
       source_index[source.source_tag] = index;
       index += 1;
   });
 }
-
 
 fetchData();
 
@@ -126,6 +127,7 @@ const source_logo_template = `
 <div>
   <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
 </div>`
+
 const news_item_template = 
 `<div class="news-item">
 <div>
@@ -133,7 +135,7 @@ const news_item_template =
       <img target="_blank" src="{image-url}">
     </a>
 </div>
-<p href="{news-url}" target="_blank">{title}</p>
+<a href="{news-url}" target="_blank">{title}</a>
 </div>`
 function updateMenu(e){
   if(e.target.metadata){
@@ -181,4 +183,25 @@ function createNullPoint() {
   // Draw a path in the shape of an arrow.
   // Generate the base64 image URL from the canvas.
   return c.toDataURL();
+}
+
+function collapseSwitch(self, collapseItemID1, collapseItemID2){
+  var collapseItem1 = document.getElementById(collapseItemID1);
+  var collapseItem2 = document.getElementById(collapseItemID2);
+  if(collapseItem1.style.display == 'none'){
+    collapseItem1.style.display = 'flex';
+    collapseItem2.style.display = 'none';
+  }
+  else{
+    collapseItem1.style.display = 'none';
+    collapseItem2.style.display = 'flex';
+  }
+  if(self.classList.contains('arrow-open')){
+    self.classList.remove('arrow-open')
+    self.classList.add('arrow-close')
+  }
+  else{
+    self.classList.remove('arrow-close')
+    self.classList.add('arrow-open')
+  }
 }
