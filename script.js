@@ -126,7 +126,9 @@ window.onload = function() {
 const source_logo_template = `<div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>`
 const news_item_template = `<div class="news-item">
 <div>
-    <img href="{news-url}" target="_blank" src="{image-url}">
+    <a href="{news-url}" target="_blank"}>
+      <img target="_blank" src="{image-url}">
+    </a>
 </div>
 <a href="{news-url}" target="_blank">{title}</a>
 </div>`
