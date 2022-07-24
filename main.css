@@ -1,5 +1,108 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+@media only screen and (max-width:770px) {
+    .map-holder{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+    }
+    .map{
+        width: 100vw;
+        height: 70vh;
+    }
+    .toolbar{
+        display: flex;
+        flex-wrap:wrap;
+        height: 30vh;
+        width: 100vw;
+    }
+    
+    .source-list{
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        overflow-y: scroll;
+        width: '80px';
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .news-list{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        overflow-x: scroll;
+        flex: 1;
+    }
+
+    .news-item > div > a > img{
+        width: 40vw;
+        height: 15vh;
+        border-radius: 10px;
+    }
+    
+    .news-item > p{
+        margin: 0px;
+        font-size: 0.9em;
+        word-wrap: break-word;
+        overflow: hidden;
+        height: 12vh;
+        text-decoration: none;
+        color: black;
+        z-index: 9999;
+        width: 40vw;
+    }
+}
+
+@media only screen and (min-width: 771px ) {
+    .map-holder{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 90vh;
+    }
+    
+    
+    .map{
+        width: 75vw;
+        height: 90vh;
+    }
+    
+    .toolbar{
+        display: flex;
+        flex-wrap:wrap;
+        height: 90vh;
+        width: 25vw;
+    }
+
+    .source-list{
+        width: '50px';
+        margin-left: 20px;
+        margin-right: 20px;
+        height:100%;
+    }
+    
+    .news-list{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow-y: scroll;
+        flex: 1;
+    }
+    
+    .news-item > div > a > img{
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .news-item > a{
+        font-size: 0.9em;
+        text-decoration: none;
+        color: black;
+    }
+}
+
 html,body{
     scroll-behavior: smooth;
     font-family: 'Poppins';
@@ -19,58 +122,13 @@ html,body{
     color: white;
 }
 
-.map-holder{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 90vh;
-}
-
-.map{
-    width: 75vw;
-    height: 90vh;
-}
-
-.toolbar{
-    display: flex;
-    flex-wrap:wrap;
-    height: 90vh;
-    width: 25vw;
-}
-
-.source-list{
-    width: '50px';
-    margin-left: 20px;
-    margin-right: 20px;
-    height:100%;
-}
-
-.news-list{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: scroll;
-    flex: 1;
-}
-
 .news-item{
     width:fit-content;
     display: block;
     margin: 10px;
     border-radius: 20px;
 }
-
-.news-item > div > a > img{
-    width: 100%;
-    border-radius: 10px;
-}
-
-.news-item > a{
-    font-size: 0.9em;
-    text-decoration: none;
-    color: black;
-}
-
+ 
 .source-logo{
     background-color: white;
     width: 40px;
