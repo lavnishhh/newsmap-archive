@@ -133,7 +133,7 @@ const news_item_template =
       <img target="_blank" src="{image-url}">
     </a>
 </div>
-<a href="{news-url}" target="_blank">{title}</a>
+<p href="{news-url}" target="_blank">{title}</p>
 </div>`
 function updateMenu(e){
   if(e.target.metadata){
