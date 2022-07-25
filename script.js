@@ -1,8 +1,13 @@
 var json_data
-var loc = [];
 var pins = {};
 var news_sources = {}
 var source_index = {}
+
+source_logo_template = 
+`<div>
+  <div onclick="createHeatmap({onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
+</div>`
+
 async function fetchData() {
 
   const response = await fetch('./data.json');
@@ -10,7 +15,7 @@ async function fetchData() {
   var index = 0
   var sources_info = document.getElementById('sources-info')
   json_data.forEach(source => {
-      sources_info.innerHTML += source_logo_template.replace('{image-url}',source.image)
+      sources_info.innerHTML += source_logo_template.replace('{image-url}',source.image).replace('{onclick-data-ref}',"'" + source.source_tag + "'")
       news_sources[source.source_tag] = {'source-tag':source['source_tag'], 'image-url':source['image']};
       source_index[source.source_tag] = index;
       index += 1;
@@ -19,7 +24,6 @@ async function fetchData() {
 
 fetchData();
 
-const sources = ['ht','ndtv','rw','idto']
 var map
 var hiddenCityLabels = {
   "version": "1.0",
@@ -61,7 +65,42 @@ window.onload = function() {
     maxBounds: map.getBounds(),
   });
 
-  json_data.forEach(source => {
+  createHeatmap('all');
+
+}
+
+function createHeatmap(content){
+  var loc = [];
+  var pins = [];
+
+  //clear pushpins
+  for (var i = map.entities.getLength() - 1; i >= 0; i--) {
+    var pushpin = map.entities.get(i);
+    if (pushpin instanceof Microsoft.Maps.Pushpin) {
+        map.entities.removeAt(i);
+    }
+  }
+
+  //clear heatMap
+  map.layers.clear();
+  if(content=='all'){
+    heat_data = json_data
+  }
+  else{
+    heat_data = [json_data[source_index[content]]]
+
+    //create source logo object to indicate selected source
+    const link_list_item = document.getElementById('news_list');
+    link_list_item.innerHTML = "";
+
+    const source_list_item = document.getElementById('source_list');
+    source_list_item.innerHTML = "";
+    source_list_item.innerHTML += loc_logo_template.replace('{image-url}',heat_data[0]['image'])
+      .replace('{onclick-data-ref}',null) 
+  }
+
+  //create heat data
+  heat_data.forEach(source => {
     for(const [place, data] of Object.entries(source.data)){
       if(!(place in pins)){
         pins[place] = {}
@@ -78,24 +117,12 @@ window.onload = function() {
     }
   });
 
-  const infobox_html_template =
-        `<div id="infoboxText" style="background-color:rgba(208,208,205,0.8); border-radius:15px; width:400px; height:400px; padding: 10px;">
-        <div id="source-list" style = "overflow-y: auto;">
-        </div>
-        {source-list}
-        </div>`;
-
+  //create pushpoints from heat data
   for(const [place, data] of Object.entries(pins)){
     var infobox_source_html = '{source-logo}'
     for(const [source, links] of Object.entries(data.data)){
-      infobox_source_html = infobox_source_html.replace('{source-logo}',source_logo_template).replace('{image-url}',news_sources[source]['image-url'])
+      infobox_source_html = infobox_source_html.replace('{source-logo}',loc_logo_template).replace('{image-url}',news_sources[source]['image-url'])
     }
-    var info_html = infobox_html_template
-    info_html = info_html.replace('{source-list}', infobox_source_html.replace('{source-logo}',''))
-    var infobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(15,83), 
-          { htmlContent: info_html,
-            visible: false 
-        });
     var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(data.cordinates[0], data.cordinates[1]),{
       icon: createNullPoint()
     });
@@ -109,13 +136,15 @@ window.onload = function() {
     Microsoft.Maps.Events.addHandler(pushpin, 'click', updateMenu);
   }
 
+  //create heatmap
   Microsoft.Maps.loadModule('Microsoft.Maps.HeatMap', function () {
     var heatmap = new Microsoft.Maps.HeatMapLayer(loc, {
-        intensity: 0.1,
+        intensity: 0.08,
         radius: 50000,
         unit: 'meters', 
         colorGradient: {
             '0': 'Black',
+            '0.1': 'Purple',
             '0.4': 'Purple',
             '0.6': 'Red',
             '0.8': 'Yellow',
@@ -125,7 +154,7 @@ window.onload = function() {
     map.layers.insert(heatmap);
 });
 }
-const source_logo_template = 
+const loc_logo_template = 
 `<div>
   <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
 </div>`
@@ -139,7 +168,6 @@ const news_item_template =
 </div>
 <a href="{news-url}" target="_blank">{title}</a>
 </div>`
-
 function updateMenu(e){
   if(e.target.metadata){
     updateLinkMenu()
@@ -151,7 +179,7 @@ function updateMenu(e){
     cordinates.textContent = e.target.metadata.cordinates[0] + ", " + e.target.metadata.cordinates[1];
     source_list_item.innerHTML = '' 
     for(const [source, links] of Object.entries(e.target.metadata.info)){
-      source_list_item.innerHTML += source_logo_template.replace('{image-url}',news_sources[source]['image-url'])
+      source_list_item.innerHTML += loc_logo_template.replace('{image-url}',news_sources[source]['image-url'])
       .replace('{onclick-data-ref}',"'" + e.target.metadata.title + '-' + source + "'") 
     }
   }
