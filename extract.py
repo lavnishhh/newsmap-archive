@@ -1,6 +1,4 @@
-from tkinter import Place
 from bs4 import BeautifulSoup as bs
-from numpy import imag
 import requests
 import re
 from geopy.geocoders import Nominatim
@@ -178,14 +176,12 @@ def ndtv():
                     continue
             tim = doc.find("span",attrs={"itemprop":"dateModified"})['content']
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(tim[:-9], "%Y-%m-%dT%H:%M")):
-                data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
                 return data
 
             if(loc in places):
                 addData(data, loc, link, title, image)
                 data['count']+=1
             
-    data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
     return data
 
 def ht():
@@ -208,8 +204,6 @@ def ht():
             ti = replaceMultiple(news.find("div", class_= "dateTime").text, ["IST", "Published", "Updated", "on",","]).split(" ")[2:7]
             #ti -> [Mon, DD, YYYY, HH:MM, AM/PM]
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(" ".join(ti), "%b %d %Y %I:%M %p")):
-
-                data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
                 return data
                 #break if article was posted more than 24 hours ago
             
@@ -219,7 +213,6 @@ def ht():
                     addData(data, place, link, title, image)
                     data['count']+=1
                     break
-    data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
     return data
 
 def rw():
@@ -243,13 +236,11 @@ def rw():
             time = bs(requests.get(link).content, 'html.parser').find('time')['datetime']
 
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(time[:19],"%Y-%m-%dT%H:%M:%S")):
-                data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
                 return data
             for place in places:
                 if(re.search(place ,link[54:].replace('-',' '),re.IGNORECASE)):
                     addData(data, place,link, title, image)
                     data['count']+=1
-    data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
     return data
 
 def idto():
@@ -272,7 +263,6 @@ def idto():
                 title = news.select_one('div.detail > h2')['title']
 
                 if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(time, "%Y-%m-%dT%H:%M:%S")):
-                    data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
                     return data
 
                 for place in places:
@@ -287,9 +277,7 @@ def idto():
                         if(re.search(place ,article.select_one('dl.profile-byline > dt').text,re.IGNORECASE)):
                             addData(data, place,link,title, image)
                             data['count'] += 1
-                            break    
-
-    data['data']['z'] = {'cordinates':[0,0], 'count':0, 'links':[]}
+                            break
     return data
 
 #infinite scroll
