@@ -24,7 +24,11 @@
         <div id="plotMap" class="map"></div>
         <div id="toolbar" class="toolbar">
             <div id="source-type" class="source-type">
-                <div id="sources-info" class="sources-info"></div>
+                <div id="sources-info" class="sources-info">
+                    <div onclick="createHeatmap('all');" class="source-logo" style="background-position: 10px 10px;">
+                        IN
+                    </div>
+                </div>
             </div>
 
             <div id="map-info-collapse" class="arrow arrow-open" onclick="collapseSwitch(this,'source-type','loc-type')"></div>
