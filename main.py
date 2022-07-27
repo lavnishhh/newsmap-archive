@@ -5,8 +5,6 @@ import time as t
 print('imported libraries')
 
 source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','cnbc','zee']
-#source_in = ['et']
-
 with open('data.json', 'r') as j:
      json_inp = json.loads(j.read())
 
@@ -27,12 +25,8 @@ def update_data(sources):
     with open('./data.json', 'w') as jso:
             json.dump(json_inp,jso,indent=3)
 
+ti = t.time()
+
 update_data(source_in)
-# fig.update_layout(
-#     margin=dict(l=0,r=0,b=0,t=0),
-#     )
-# fig.update(layout_coloraxis_showscale=False)
-# print('Plotted, writing')
-# fig.write_image("./images/map_update.png")
-# #ig.write_html("index1.html")
-# print("plot complete")
+
+print(t.time()-ti)

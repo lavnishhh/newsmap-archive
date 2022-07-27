@@ -70,9 +70,11 @@ def et():
     agent = {"User-Agent":'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
 
     for a in range(1,10):
-        print('Scraping page ',a)
+        print('Scraping page',a)
         document = bs(requests.get('https://economictimes.indiatimes.com/lazyloadlistnew.cms?msid=81582957&curpg='+str(a),headers = agent).content,'html.parser')
         for article in document.select('div.eachStory'):
+            if(not article.select_one('img')):
+                continue
             image = 'https://economictimes.indiatimes.com/' + article.select_one('img')['data-original']
             link = 'https://economictimes.indiatimes.com/' + article.select_one('a')['href']
             title = article.select_one('h3>a').text
