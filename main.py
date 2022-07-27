@@ -4,7 +4,7 @@ import extract
 import time as t
 print('imported libraries')
 
-source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','cnbc']
+source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','cnbc','zee']
 #source_in = ['et']
 
 with open('data.json', 'r') as j:
