@@ -195,7 +195,7 @@ function updateLinkMenu(self,data_ref){
     var title= link_data.title
     console.log()
     if(title.length > 65 && screen.width<770){
-      title = title.substring(1,65) + '. . .'
+      title = title.substring(0,65) + '. . .'
     }
     link_list_item.innerHTML += news_item_template
     .replace('{news-url}',link_data.url)
