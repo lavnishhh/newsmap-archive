@@ -36,6 +36,30 @@ def addData(data, place, link, title, image):
     data['data'][place]['count'] = len(data['data'][place]['links'])
 
     return data
+
+def zee():
+    data = {}
+    data['source_tag'] = 'zee'
+    data['name'] = 'Zee news'
+    data['image'] = 'https://www.timesnownews.com/assets/icons/svg/times-now.svg'
+    data['count'] = 0
+    data['data'] = {}
+    agent = {"User-Agent":'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
+    for a in range(0,10):
+        print("Scraping page",a)
+        articles = bs(requests.get('https://zeenews.india.com/common/getmorenews/%x/120183'%(a),headers=agent).content,'html.parser').select('div.row')
+        for news in articles:
+            image = news.find('img')['src']
+            link = 'https://zeenews.india.com/' + news.find('a')['href']
+            title = news.find('a').text
+            time = bs(requests.get(link,headers=agent).content,'html.parser').select('div.articleauthor_details > span')[-4].text[:-4]
+            if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(time, "%b %d, %Y, %I:%M %p")):
+                return data
+            for place in places:
+                if(re.search(place ,link,re.IGNORECASE)):
+                    addData(data, place, link, title, image)
+                    break
+
 def et():
     data = {}
     data['source_tag'] = 'et'
@@ -280,7 +304,29 @@ def idto():
                             break
     return data
 
-#infinite scroll
+def timnow():
+    data = {}
+    data['source_tag'] = 'timnow'
+    data['name'] = 'Times Now'
+    data['image'] = 'https://www.timesnownews.com/assets/icons/svg/times-now.svg'
+    data['count'] = 0
+    data['data'] = {}
+
+    news_info = json.loads(requests.get('https://apiprod.timesnownews.com/api/getlisting?seopath=mirror-now/in-focus&pageno=1&itemcount=30').content)['response']
+    for news in news_info['sections']['tnn_87847632']['children']:
+        title = news['title']
+        link = 'https://www.timesnownews.com/' + news['seopath'] + '-article-' + str(news['msid'])
+        time = news['metainfo']['LastPublishMilliTime']['value']
+        image  = 'https://static.tnn.in/photo/msid-{msid},imgsize-26308,updatedat-{upd},width-200,height-200,resizemode-75/{msid}.jpg'.format(msid = news['msid'], upd= news['updatedate'])
+        #now - 1 day > start + millisec === now > start + 1 + millisec
+        if(dt.datetime.now()>dt.datetime(year=1970,month=1,day=2,hour=5,minute=30,second=1)+dt.timedelta(milliseconds=int(time))):
+            return data
+        for place in places:
+            if(re.search(place ,link,re.IGNORECASE)):
+                addData(data, place, link, title, image)
+                break
+    return data
+
 def cnbc():
     data = {}
     data['source_tag'] = 'cnbc'
@@ -302,3 +348,4 @@ def cnbc():
                 addData(data, place, link, title, image)
                 break
     return data
+

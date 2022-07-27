@@ -872,14 +872,6 @@
                   "img": "https://images.hindustantimes.com/img/2022/07/24/148x111/murder-torture-humiliation_8941dcd2-08b5-11e9-af2d-a06eafd7db38_1658681665625_1658681665625.jpg"
                }
             ]
-         },
-         "z": {
-            "cordinates": [
-               0,
-               0
-            ],
-            "count": 0,
-            "links": []
          }
       }
    },
@@ -1377,14 +1369,6 @@
                   "img": "https://c.ndtvimg.com/2022-07/esp2u2bg_sun-halo-dehradun-pti_625x300_24_July_22.jpg"
                }
             ]
-         },
-         "z": {
-            "cordinates": [
-               0,
-               0
-            ],
-            "count": 0,
-            "links": []
          }
       }
    },
@@ -1923,14 +1907,6 @@
                   "img": "https://img.republicworld.com/republic-prod/stories/promolarge/mdpi/jzu236h5p0gj1kqt_1658679443.jpeg?tr=w-378,h-203"
                }
             ]
-         },
-         "z": {
-            "cordinates": [
-               0,
-               0
-            ],
-            "count": 0,
-            "links": []
          }
       }
    },
@@ -2763,14 +2739,6 @@
                   "img": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202207/WhatsApp_Image_2022-07-24_at_8_1200x768.jpeg?1E0HDqY3AzPT2eYew649uyTZWbJXrqDn&size=170:96"
                }
             ]
-         },
-         "z": {
-            "cordinates": [
-               0,
-               0
-            ],
-            "count": 0,
-            "links": []
          }
       }
    },
@@ -4505,6 +4473,529 @@
                   "title": "Bihar: Five killed, eight injured in blast at 'illegal' firecracker factory in Saran",
                   "url": "https://economictimes.indiatimes.com//news/india/bihar-five-killed-eight-injured-in-blast-at-illegal-firecracker-factory-in-saran/videoshow/93094285.cms",
                   "img": "https://economictimes.indiatimes.com//thumb/msid-93094285,width-160,height-120,imgsize-64228/bihar-five-killed-eight-injured-in-blast-at-illegal-firecracker-factory-in-saran.jpg"
+               }
+            ]
+         }
+      }
+   },
+   {
+      "source_tag": "timnow",
+      "name": "Times Now",
+      "image": "https://media.glassdoor.com/sqll/1869554/times-now-squarelogo-1559301251685.png",
+      "count": 16,
+      "data": {
+         "Puri": {
+            "cordinates": [
+               85.8252538,
+               19.8076083
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "Gujarat hooch tragedy: Nine die, many hospitalised after consuming spurious liquor",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/gujarat-hooch-tragedy-nine-die-many-hospitalised-after-consuming-spurious-liquor-article-93120001",
+                  "img": "https://static.tnn.in/photo/msid-93120001,imgsize-26308,updatedat-1658772801390,width-200,height-200,resizemode-75/93120001.jpg"
+               }
+            ]
+         },
+         "MP": {
+            "cordinates": [
+               145.7379338,
+               15.1753648
+            ],
+            "count": 2,
+            "links": [
+               {
+                  "title": "Two sides clash in MP after bullies allegedly prevent Dalit minor girl from going to school",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/two-sides-clash-in-mp-after-bullies-allegedly-prevent-dalit-minor-girl-from-going-to-school-article-93118175",
+                  "img": "https://static.tnn.in/photo/msid-93118175,imgsize-26308,updatedat-1658764822724,width-200,height-200,resizemode-75/93118175.jpg"
+               },
+               {
+                  "title": "Indian Antarctic Bill: How India intends to save fragile Antarctic ecosystem to impede global climate change impact",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/indian-antarctic-bill-how-india-intends-to-save-fragile-antarctic-ecosystem-to-impede-global-climate-change-impact-article-93112299",
+                  "img": "https://static.tnn.in/photo/msid-93112299,imgsize-26308,updatedat-1658748563844,width-200,height-200,resizemode-75/93112299.jpg"
+               }
+            ]
+         },
+         "UP": {
+            "cordinates": [
+               80.859666,
+               27.1303344
+            ],
+            "count": 4,
+            "links": [
+               {
+                  "title": "UP: Police books 6-year-old for eve-teasing, assault, fraud",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/up-police-books-6-year-old-for-eve-teasing-assault-fraud-article-93117129",
+                  "img": "https://static.tnn.in/photo/msid-93117129,imgsize-26308,updatedat-1658760432148,width-200,height-200,resizemode-75/93117129.jpg"
+               },
+               {
+                  "title": "Man in China catches toddler falling from high-rise building, internet calls him \u2018real superman\u2019 - WATCH",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/man-in-china-catches-toddler-falling-from-high-rise-building-internet-calls-him-real-superman-watch-article-93116180",
+                  "img": "https://static.tnn.in/photo/msid-93116180,imgsize-26308,updatedat-1658756735183,width-200,height-200,resizemode-75/93116180.jpg"
+               },
+               {
+                  "title": "Droupadi Murmu reveals her original name during interview; says teacher in school changed it",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/droupadi-murmu-biography-15th-president-of-india-reveals-her-original-name-during-interview-article-93111759",
+                  "img": "https://static.tnn.in/photo/msid-93111759,imgsize-26308,updatedat-1658747743080,width-200,height-200,resizemode-75/93111759.jpg"
+               },
+               {
+                  "title": "WATCH \u2013 How to combat Monkeypox scare in India: Dr DK Gupta explains Dos and Don\u2019ts",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/watch-how-to-combat-monkeypox-scare-in-india-dr-dk-gupta-explains-dos-and-donts-article-93108366",
+                  "img": "https://static.tnn.in/photo/msid-93108366,imgsize-26308,updatedat-1658735699486,width-200,height-200,resizemode-75/93108366.jpg"
+               }
+            ]
+         },
+         "Rajasthan": {
+            "cordinates": [
+               73.7684549,
+               26.8105777
+            ],
+            "count": 2,
+            "links": [
+               {
+                  "title": "Rajasthan: 3 Die, 12 Fall ill After Drinking Contaminated Water at destitute shelter",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/rajasthan-3-die-12-fall-ill-after-drinking-contaminated-water-at-destitute-shelter-article-93115174",
+                  "img": "https://static.tnn.in/photo/msid-93115174,imgsize-26308,updatedat-1658754216508,width-200,height-200,resizemode-75/93115174.jpg"
+               },
+               {
+                  "title": "SC agrees to hear Rajasthan govt appeal against HC granting parole to life convict for procreation",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/sc-agrees-to-hear-rajasthan-govt-appeal-against-hc-granting-parole-to-life-convict-for-procreation-article-93112489",
+                  "img": "https://static.tnn.in/photo/msid-93112489,imgsize-26308,updatedat-1658749287425,width-200,height-200,resizemode-75/93112489.jpg"
+               }
+            ]
+         },
+         "Mumbai": {
+            "cordinates": [
+               72.878176,
+               19.0785451
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "Mumbai: Labourer falls to death in Malad; builder booked",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/mumbai-labourer-falls-to-death-in-malad-builder-booked-article-93111980",
+                  "img": "https://static.tnn.in/photo/msid-93111980,imgsize-26308,updatedat-1658747947918,width-200,height-200,resizemode-75/93111980.jpg"
+               }
+            ]
+         },
+         "Bhopal": {
+            "cordinates": [
+               77.401989,
+               23.2584857
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "WATCH - Monsoon fury in Bhopal: Road caves in after heavy rainfall",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/watch-monsoon-fury-in-bhopal-road-caves-in-after-heavy-rainfall-article-93109831",
+                  "img": "https://static.tnn.in/photo/msid-93109831,imgsize-26308,updatedat-1658735621663,width-200,height-200,resizemode-75/93109831.jpg"
+               }
+            ]
+         },
+         "Kerala": {
+            "cordinates": [
+               76.5120396,
+               10.3528744
+            ],
+            "count": 2,
+            "links": [
+               {
+                  "title": "Snake wraps around girl student\u2019s leg in Kerala school",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/snake-wraps-around-girl-students-leg-in-kerala-school-article-93108607",
+                  "img": "https://static.tnn.in/photo/msid-93108607,imgsize-26308,updatedat-1658741395003,width-200,height-200,resizemode-75/93108607.jpg"
+               },
+               {
+                  "title": "Children of unwed women, rape victims can keep their mother\u2019s name alone in identity certificates, documents: Kerala HC",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/children-of-unwed-women-rape-victims-can-keep-their-mothers-name-alone-in-identity-certificates-documents-kerala-hc-article-93104210",
+                  "img": "https://static.tnn.in/photo/msid-93104210,imgsize-26308,updatedat-1658728455224,width-200,height-200,resizemode-75/93104210.jpg"
+               }
+            ]
+         },
+         "Pune": {
+            "cordinates": [
+               73.8544541,
+               18.521428
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "Pune: 900 schools participate in workshop for safety of children",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/pune-900-schools-participate-in-workshop-for-safety-of-children-article-93108158",
+                  "img": "https://static.tnn.in/photo/msid-93108158,imgsize-26308,updatedat-1658740045231,width-200,height-200,resizemode-75/93108158.jpg"
+               }
+            ]
+         },
+         "Assam": {
+            "cordinates": [
+               93.2551303,
+               26.4073841
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "2 more workers found in Arunachal forests after 20 days; 10 of 19 missing Assam workers have been found so far",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/2-more-workers-found-in-arunachal-forests-after-20-days-10-of-19-missing-assam-workers-have-been-found-so-far-article-93107185",
+                  "img": "https://static.tnn.in/photo/msid-93107185,imgsize-26308,updatedat-1658737471506,width-200,height-200,resizemode-75/93107185.jpg"
+               }
+            ]
+         },
+         "UK": {
+            "cordinates": [
+               -3.2765753,
+               54.7023545
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "SSC Scam: Who is Arpita Mukherjee; the actress who stashed Rs 22 crore at her residence",
+                  "url": "https://www.timesnownews.com/mirror-now/in-focus/ssc-scam-who-is-arpita-mukherjee-the-actress-who-stashed-rs-22-crore-at-her-residence-article-93097689",
+                  "img": "https://static.tnn.in/photo/msid-93097689,imgsize-26308,updatedat-1658704229768,width-200,height-200,resizemode-75/93097689.jpg"
+               }
+            ]
+         }
+      }
+   },
+   {
+      "source_tag": "zee",
+      "name": "Zee news",
+      "image": "https://zeenews.india.com/sites/default/files/images/icons/icon-192x192.png",
+      "count": 35,
+      "data": {
+         "UP": {
+            "cordinates": [
+               80.859666,
+               27.1303344
+            ],
+            "count": 5,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/keep-minimum-10-beds-in-covid-hospitals-for-monkeypox-patients-up-cm-yogi-adityanath-2490200.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070091-up-monkeypox.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/supreme-courts-big-order-backs-eds-powers-to-arrest-under-pmla-2490061.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069979-scbail.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/upsssc-pet-2022-hurry-up-last-day-to-apply-today-exams-from-this-date-check-date-and-time-here-2489935.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069840-upsssc-pet.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/supreme-court-to-deliver-verdict-on-pleas-challenging-money-laundering-act-amid-ed-questioning-of-sonia-gandhi-2489930.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069836-supremecourtnewani.gif"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/ed-summons-to-rahul-sonia-gandhi-to-cover-up-nupur-sharmas-case-robert-vadra-2489922.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069825-rahul-sonia-gandhi-robert-vadra.jpg"
+               }
+            ]
+         },
+         "madhya-pradesh": {
+            "cordinates": [
+               77.5340719,
+               23.8143419
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/five-kanwariyas-hit-by-truck-in-madhya-pradesh-angry-locals-thrash-driver-and-torch-vehicle-2490187.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070075-kanwariyas-accident.jpg"
+               }
+            ]
+         },
+         "Maharashtra": {
+            "cordinates": [
+               75.6741579,
+               18.9068356
+            ],
+            "count": 2,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/maharashtra-cabinet-expansion-soon-cm-eknath-shinde-to-leave-for-delhi-tonight-2490179.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070059-eknath-shinde.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/maharashtra-cm-eknath-shindes-birthday-greetings-as-uddhav-thackeray-turns-62-i-pray-2490038.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069955-uddhav-eknath-cm.jpg"
+               }
+            ]
+         },
+         "Noida": {
+            "cordinates": [
+               77.3271074,
+               28.5707841
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/monkeypox-alert-now-suspected-case-found-in-noida-details-here-2490165.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070045-untitled-design-2022-07-22t193238.284.jpg"
+               }
+            ]
+         },
+         "Kashmir": {
+            "cordinates": [
+               76.76326540816436,
+               34.68003014999999
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/jailed-kashmiri-separatist-leader-yasin-malik-admitted-to-hospital-in-delhi-after-hunger-strike-2490137.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070032-yasin-malik.jpg"
+               }
+            ]
+         },
+         "Odisha": {
+            "cordinates": [
+               84.6897321,
+               20.5431241
+            ],
+            "count": 6,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/chse-odisha-result-2022-odisha-class-12th-results-declared-at-chseodisha-nic-in-how-to-check-if-official-website-crashed-2490009.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069921-digilocker.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/chse-odisha-result-2022-odisha-class-12th-results-declared-at-chseodisha-nic-in-direct-link-to-check-scorecard-here-2489985.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069895-chse.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/live-updates/chse-class-12th-result-2022-declared-live-updates-check-odisha-board-class-12th-science-result-2022-and-odisha-board-class-12th-commerce-result-2022-at-chseodisha-nic-in-2489927",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070025-odisha-plus-two-result-2022.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/ojee-2022-results-odisha-jee-results-declared-at-ojee-nic-in-direct-link-to-check-scorecard-here-2490022.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069937-odishaaaaa.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/chse-odisha-result-2022-odisha-class-12th-results-to-be-announced-today-at-orissaresults-nic-in-here-s-how-to-check-via-sms-2489999.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069910-odisharesults.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/chse-odisha-result-2022-odisha-class-12th-results-to-be-out-today-at-chseodisha-nic-in-check-time-and-more-here-2489923.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069826-punjab-result.jpg"
+               }
+            ]
+         },
+         "uttar-pradesh": {
+            "cordinates": [
+               80.859666,
+               27.1303344
+            ],
+            "count": 2,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/aimim-s-asaduddin-owaisi-attacks-uttar-pradesh-government-no-showering-of-petals-on-muslims-2490118.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070014-owaisi-pic.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/phoolan-devis-kidnapper-chheda-singh-dies-of-this-disease-in-uttar-pradeshs-etawah-district-2490060.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069978-phoolanzee.jpg"
+               }
+            ]
+         },
+         "UK": {
+            "cordinates": [
+               -3.2765753,
+               54.7023545
+            ],
+            "count": 2,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/ssc-scam-ed-now-grills-tmc-mla-manik-bhattacharya-waits-for-keys-to-search-flat-owned-by-arpita-mukherjee-2490098.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070007-manikparthazee.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/mpsos-ruk-jana-nahi-10th-12th-result-2022-declared-at-mpsos-nic-in-direct-link-to-check-scorecard-here-2489983.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069889-mp-result.jpg"
+               }
+            ]
+         },
+         "Kolkata": {
+            "cordinates": [
+               88.35769124388872,
+               22.5414185
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/mithun-chakrabortys-special-meeting-with-bjp-mlas-in-kolkata-may-lead-the-procession-against-partha-chatterjee-tomorrow-2490089.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1070000-mithun.jpg"
+               }
+            ]
+         },
+         "MP": {
+            "cordinates": [
+               145.7379338,
+               15.1753648
+            ],
+            "count": 4,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/defence-job-openings-2022-bumper-vacancies-apply-for-135850-post-under-indian-army-indian-navy-and-indian-airforce-check-posts-and-other-details-here-2490072.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069987-indianarmy.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/monkeypox-outbreak-one-of-delhi-patients-contacts-displaying-symptom-being-monitored-2490001.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069912-monkeypox-india.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/another-jolt-to-uddhav-thackeray-shiv-sena-chiefs-close-aide-to-join-eknath-shindes-rebel-camp-soon-2489970.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069871-maharashtra-political-crisis-uddhav-thackeray-eknath-shinde.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/ts-icet-2022-exams-from-today-check-important-instructions-and-guidelines-here-at-icet-tsche-ac-in-2489940.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069842-ezgif-4-2454b8fcf1.jpg"
+               }
+            ]
+         },
+         "Bengal": {
+            "cordinates": [
+               -85.9228997,
+               39.4735045
+            ],
+            "count": 3,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/west-bengal-board-declared-wbbse-10th-scrutiny-result-2022-at-indiaresults-com-here-s-how-to-check-results-2490015.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069926-wbbse.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/2022-a-lot-of-love-stories-three-romantic-leaders-of-mamata-banerjees-bengal-see-pics-2489978.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069885-love.jpg"
+               },
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/west-bengal-ssc-scam-heres-what-has-happened-so-far-2489871.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/26/1069742-west-bengal-ssc-scam.jpg"
+               }
+            ]
+         },
+         "Karnataka": {
+            "cordinates": [
+               75.7223521,
+               14.5203896
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/karnataka-govt-to-install-30-ft-bronze-statue-of-goddess-bhuvaneshwari-to-project-pro-kannada-identity-ahead-of-assembly-polls-2489945.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069846-goddressbhuwaneshwaritwitter.jpg"
+               }
+            ]
+         },
+         "Bihar": {
+            "cordinates": [
+               85.906508,
+               25.6440845
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/bihar-govt-promotes-14-retired-and-2-dead-ias-officers-find-out-what-happened-2489926.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069828-nitish-kumar-file.jpg"
+               }
+            ]
+         },
+         "Puri": {
+            "cordinates": [
+               85.8252538,
+               19.8076083
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/gujarat-hooch-tragedy-spurious-liquor-claims-more-than-three-lives-in-india-every-day-2489924.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069827-gujarat-hooch-tragedy.jpg"
+               }
+            ]
+         },
+         "Punjab": {
+            "cordinates": [
+               75.5004841,
+               30.9293211
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/captain-imran-khans-comeback-in-pak-punjab-prime-minister-sharifs-defeat-in-the-supreme-court-2489919.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/27/1069818-shehbazsharif-imrankhan.jpg"
+               }
+            ]
+         },
+         "Agra": {
+            "cordinates": [
+               78.0098161,
+               27.1752554
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/dna-exclusive-analysis-of-congress-satyagraha-against-ed-probe-on-sonia-gandhi-2489907.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/26/1069796-rohit-ranjan.jpg"
+               }
+            ]
+         },
+         "Kedarnath": {
+            "cordinates": [
+               79.0673204,
+               30.7345609
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/online-fraud-alert-noida-woman-tried-to-book-kedarnath-hotel-it-turned-into-a-nightmare-2489906.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/26/1069793-fraud-alert.jpg"
+               }
+            ]
+         },
+         "Meghalaya": {
+            "cordinates": [
+               91.2999102,
+               25.5379432
+            ],
+            "count": 1,
+            "links": [
+               {
+                  "title": "",
+                  "url": "https://zeenews.india.com//india/meghalaya-bjp-leader-accused-of-operating-sex-racket-arrested-in-up-2489865.html",
+                  "img": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2022/07/26/1069736-meghalaya-bjp-vice-president.jpg"
                }
             ]
          }
