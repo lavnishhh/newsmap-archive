@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-@media only screen and (max-width:770px) {
+@media only screen and (max-width:940px) {
     .map-holder{
         display: flex;
         flex-direction: column;
@@ -26,9 +26,17 @@
 
     .source-type{
         display: flex;
+        width: 80px;
         flex-direction: row;
         justify-content: center;
-        padding:0px 20px 0px 20px;
+        padding:0px 0px 0px 5px;
+    }
+
+    .sources-info{
+        display: flex;
+        width: 80px;
+        flex-direction: column;
+        overflow-y: scroll;
     }
 
     .loc-type{
@@ -39,22 +47,21 @@
     
     .source-list{
         display: flex;
+        width: 80px;
         flex-direction: column;
         overflow-y: scroll;
-        width: '80px';
     }
 
     .news-list{
         display: flex;
         flex-direction: row;
-        width: 100%;
         overflow-x: scroll;
         overflow-y: hidden;
         flex: 1;
     }
 
     .news-item > div > a > img{
-        width: 40vw;
+        width: 220px;
         height: 12vh;
         border-radius: 10px;
     }
@@ -68,8 +75,29 @@
         text-decoration: none;
         color: black;
         z-index: 9999;
-        width: 40vw;
+        width: 220px;
     }
+
+    @media only screen and (max-width: 810px){
+        .news-item > div > a > img{
+            width: 150px;
+            height: 12vh;
+            border-radius: 10px;
+        }
+        
+        .news-item > a{
+            display: block;
+            margin: 0px;
+            font-size: 0.9em;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-decoration: none;
+            color: black;
+            z-index: 9999;
+            width: 150px;
+        }
+    }
+
     .arrow-open {
         transform: rotate(-45deg);
         -webkit-transform: rotate(-45deg);
@@ -81,7 +109,7 @@
     }
 }
 
-@media only screen and (min-width: 771px ) {
+@media only screen and (min-width: 941px ) {
     .map-holder{
         display: flex;
         flex-direction: row;
@@ -101,7 +129,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: calc(90vh - 13px);
+        height: 90vh;
         width: 25vw;
         overflow: hidden;
     }
@@ -110,6 +138,14 @@
         display: flex;
         flex-direction: column;
         padding:0px 0px 0px 20px;
+    }
+
+    .sources-info{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 20vh;
+        overflow-y: scroll;
     }
 
     .loc-type{
@@ -122,7 +158,7 @@
         width: 80px;
         margin-left: 10px;
         padding: 0%;
-        height: calc(90vh - 20px);
+        height: 70vh;
         overflow-y: scroll;
     }
     
@@ -131,7 +167,7 @@
         flex-direction: column;
         flex:1;
         width: 100%;
-        height: calc(90vh - 20px);
+        height: 70vh;
         overflow-y: scroll;
         width: calc(25vw - 90px)
     }
@@ -167,14 +203,6 @@ html,body{
     padding: 0%;
 }
 
-.sources-info{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-y: scroll;
-}
-
-
 .navbar{
     width: 100%;
     height: 10vh;
@@ -204,6 +232,7 @@ html,body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    flex-shrink: 0
 }
 
 .source-logo:hover{
@@ -222,7 +251,7 @@ html,body{
 }
 
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 15px;
 }
   
 ::-webkit-scrollbar-track {
@@ -231,7 +260,7 @@ background-color: transparent;
 
 ::-webkit-scrollbar-thumb {
 background-color: #d6dee1;
-border-radius: 20px;
+border-radius: 15px;
 border: 6px solid transparent;
 background-clip: content-box;
 }

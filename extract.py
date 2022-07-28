@@ -23,7 +23,7 @@ def replaceMultiple(string, replace=[], replaceWith=''):
             # data: { place: (cordinates, [link(s)]) - - - }
             #}
 
-abbrevated_places = {'UK':'Uttrakhand','UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu"}
+abbrevated_places = {'UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu"}
 def addData(data, place, link, title, image):
     data['count']+=1
     if(place not in data['data']):
@@ -41,7 +41,7 @@ def zee():
     data = {}
     data['source_tag'] = 'zee'
     data['name'] = 'Zee news'
-    data['image'] = 'https://www.timesnownews.com/assets/icons/svg/times-now.svg'
+    data['image'] = 'https://zeenews.india.com/sites/default/files/images/icons/icon-192x192.png'
     data['count'] = 0
     data['data'] = {}
     agent = {"User-Agent":'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36'}
@@ -51,7 +51,7 @@ def zee():
         for news in articles:
             image = news.find('img')['src']
             link = 'https://zeenews.india.com/' + news.find('a')['href']
-            title = news.find('a').text
+            title = news.find('a')['title']
             time = bs(requests.get(link,headers=agent).content,'html.parser').select('div.articleauthor_details > span')[-4].text[:-4]
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(time, "%b %d, %Y, %I:%M %p")):
                 return data

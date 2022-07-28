@@ -5,6 +5,7 @@ import time as t
 print('imported libraries')
 
 source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','cnbc','zee']
+#source_in = ['zee']
 with open('data.json', 'r') as j:
      json_inp = json.loads(j.read())
 
