@@ -5,7 +5,7 @@ var source_index = {}
 
 source_logo_template = 
 `<div>
-  <div onclick="createHeatmap({onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
+  <div onclick="createHeatmap({onclick-data-ref})" style="background-image: url({image-url});" tabindex="-1" class="source-logo"></div>
 </div>`
 
 async function fetchData() {
@@ -44,12 +44,18 @@ var hiddenCityLabels = {
   }
 };
 window.onload = function() {
+
+  var mapZoom = 5
+  if(screen.width <= 810){
+    mapZoom = 4
+  }
+
   map = new window.Microsoft.Maps.Map('#plotMap', {
     credentials: 'Asmd15OlhpdjArghMT1ycEvtCYiXMkL2Syp3DO0xxafdxG5JyWEURj2hCxmLNy3s',
     center: new window.Microsoft.Maps.Location(23.5, 83),
     maxZoom: 6,
     minZoom: 4,
-    zoom: 5,
+    zoom: mapZoom,
     enableDrag:false,
     showMapTypeSelector: false,
     enableSearchLogo: false,
@@ -156,7 +162,7 @@ function createHeatmap(content){
 }
 const loc_logo_template = 
 `<div>
-  <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" class="source-logo"></div>
+  <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" tabindex="-1" class="source-logo"></div>
 </div>`
 
 const news_item_template = 
@@ -168,18 +174,17 @@ const news_item_template =
 </div>
 <a href="{news-url}" target="_blank">{title}</a>
 </div>`
+
 function updateMenu(e){
   if(e.target.metadata){
     updateLinkMenu()
-    var source_list_item = document.getElementById('source_list');
-    const place_text = document.getElementById('place_name');
-    const cords_text = document.getElementById('cordinates');
 
-    place_text.textContent = e.target.metadata.title;
+    place_name.textContent = e.target.metadata.title;
     cordinates.textContent = e.target.metadata.cordinates[0] + ", " + e.target.metadata.cordinates[1];
-    source_list_item.innerHTML = '' 
+
+    source_list.innerHTML = '' 
     for(const [source, links] of Object.entries(e.target.metadata.info)){
-      source_list_item.innerHTML += loc_logo_template.replace('{image-url}',news_sources[source]['image-url'])
+      source_list.innerHTML += loc_logo_template.replace('{image-url}',news_sources[source]['image-url'])
       .replace('{onclick-data-ref}',"'" + e.target.metadata.title + '-' + source + "'") 
     }
   }
@@ -216,23 +221,23 @@ function createNullPoint() {
   return c.toDataURL();
 }
 
-function collapseSwitch(self, collapseItemID1, collapseItemID2){
-  var collapseItem1 = document.getElementById(collapseItemID1);
-  var collapseItem2 = document.getElementById(collapseItemID2);
-  if(collapseItem1.style.display == 'none'){
-    collapseItem1.style.display = 'flex';
-    collapseItem2.style.display = 'none';
-  }
-  else{
-    collapseItem1.style.display = 'none';
-    collapseItem2.style.display = 'flex';
-  }
-  if(self.classList.contains('arrow-open')){
-    self.classList.remove('arrow-open')
-    self.classList.add('arrow-close')
-  }
-  else{
-    self.classList.remove('arrow-close')
-    self.classList.add('arrow-open')
-  }
-}
+// function collapseSwitch(self, collapseItemID1, collapseItemID2){
+//   var collapseItem1 = document.getElementById(collapseItemID1);
+//   var collapseItem2 = document.getElementById(collapseItemID2);
+//   if(collapseItem1.style.display == 'none'){
+//     collapseItem1.style.display = 'flex';
+//     collapseItem2.style.display = 'none';
+//   }
+//   else{
+//     collapseItem1.style.display = 'none';
+//     collapseItem2.style.display = 'flex';
+//   }
+//   if(self.classList.contains('arrow-open')){
+//     self.classList.remove('arrow-open')
+//     self.classList.add('arrow-close')
+//   }
+//   else{
+//     self.classList.remove('arrow-close')
+//     self.classList.add('arrow-open')
+//   }
+// }

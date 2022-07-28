@@ -239,6 +239,10 @@ html,body{
     border: 5px solid rgb(166, 166, 166);
 }
 
+.source-logo:focus{
+    border: 5px solid rgb(166, 166, 166);
+}
+
 .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
