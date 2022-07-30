@@ -3,6 +3,15 @@ var pins = {};
 var news_sources = {}
 var source_index = {}
 
+var InsidePage = !!window.location.href.split("/")[3];
+  var PageName = null;
+  if (InsidePage) {
+    // Get the pageName.
+    PageName = window.location.href.split("/")[3];
+    // Get the data based on Page Data.
+    console.log(PageName)
+  }
+
 source_logo_template = 
 `<div>
   <div onclick="createHeatmap({onclick-data-ref})" style="background-image: url({image-url});" tabindex="-1" class="source-logo"></div>
