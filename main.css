@@ -208,11 +208,16 @@ html,body{
     height: 10vh;
     text-align: center;
     background-color: black;
+    display: flex;
+    justify-content: center;
 }
 
 .place-data{
     padding-top: 5px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .news-item{

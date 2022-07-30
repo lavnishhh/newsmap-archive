@@ -23,11 +23,11 @@ def replaceMultiple(string, replace=[], replaceWith=''):
             # data: { place: (cordinates, [link(s)]) - - - }
             #}
 
-abbrevated_places = {'UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu"}
+abbrevated_places = {'UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu",'UK':'Uttarakhand'}
 def addData(data, place, link, title, image):
     data['count']+=1
     if(place not in data['data']):
-        if(len([place]) == 2):
+        if(len(place) == 2):
             place = abbrevated_places[place]
         cord = geolocator.geocode(place)
         data['data'][place] = {'cordinates' : [cord.longitude, cord.latitude],'count': 0 , 'links': [{'title':title, 'url':link, 'img':image}]}
@@ -59,6 +59,11 @@ def zee():
                 if(re.search(place ,link,re.IGNORECASE)):
                     addData(data, place, link, title, image)
                     break
+            for abb_place in abbrevated_places:
+                if abb_place in link[link[::-1].index('/'):].split('-'):
+                    addData(data, place, link, title, image)
+                    break
+
 
 def et():
     data = {}
@@ -232,8 +237,7 @@ def ht():
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(" ".join(ti), "%b %d %Y %I:%M %p")):
                 return data
                 #break if article was posted more than 24 hours ago
-            
-            link = news.find("span", class_="share share-candidate")['data-url']
+            link = 'https://www.hindustantimes.com' + news.select_one('h3.hdg3 > a')['href']
             for place in places:
                 if(re.search(place ,link,re.IGNORECASE)):
                     addData(data, place, link, title, image)
@@ -281,6 +285,7 @@ def idto():
         doc = bs(requests.get('https://www.indiatoday.in/india?page='+str(a)).content, 'html.parser')
         news_divs = doc.select('div.catagory-listing')
         for news in news_divs:
+            found = False
             link = 'https://www.indiatoday.in' + news.select_one('div.detail > h2 > a')['href']
             if('video' not in link and 'photo' not in link and 'live' not in link and 'interactive' not in link):
                 article = bs(requests.get(link).content, 'html.parser')
@@ -290,19 +295,17 @@ def idto():
 
                 if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(time, "%Y-%m-%dT%H:%M:%S")):
                     return data
-
                 for place in places:
                     if(re.search(place ,link,re.IGNORECASE)):
                         addData(data, place,link,title, image)
-                        data['count'] += 1
+                        found = True
                         break
                 
                 #if not found in url
-                if(article.select_one('dl.profile-byline > dt')!=None):
+                if(article.select_one('dl.profile-byline > dt')!=None and not found):
                     for place in places:
                         if(re.search(place ,article.select_one('dl.profile-byline > dt').text,re.IGNORECASE)):
                             addData(data, place,link,title, image)
-                            data['count'] += 1
                             break
     return data
 
