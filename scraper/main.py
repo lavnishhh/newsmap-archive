@@ -49,7 +49,7 @@ def replaceMultiple(string, replace=[], replaceWith=''):
         string = string.replace(item, replaceWith)
     return string
 
-abbrevated_places = {'UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu",'UK':'Uttarakhand',"uttar-pradesh":"Uttar Pradesh","madhya-praedsh":"Madhya Pradesh"}
+abbrevated_places = {'UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu",'UK':'Uttarakhand',"uttar-pradesh":"Uttar Pradesh","madhya-pradesh":"Madhya Pradesh"}
 def addData(data, place, link, title, image):
     data['count']+=1
     if(place not in data['data']):
