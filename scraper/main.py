@@ -22,20 +22,17 @@ def update_data(sources):
         source_index[source['source_tag']] = ind
         ind+=1
     for source_id in sources:
-        try:
-            so_t = t.time()
-            print('started '+source_id)
-            if(source_id in source_index):
-                json_inp[source_index[source_id]] = globals()[source_id]()
-            else:
-                json_inp.append(globals()[source_id]())
-            print('finished '+source_id)
-            print(t.time() - so_t)
+       so_t = t.time()
+       print('started '+source_id)
+       if(source_id in source_index):
+           json_inp[source_index[source_id]] = globals()[source_id]()
+       else:
+           json_inp.append(globals()[source_id]())
+       print('finished '+source_id)
+       print(t.time() - so_t)
 
-            with open('data/data.json', 'w') as jso:
-                    json.dump(json_inp,jso,indent=3)
-        except:
-            print("error with",source_id)
+       with open('data/data.json', 'w') as jso:
+               json.dump(json_inp,jso,indent=3)
 
 ti = t.time()
 
