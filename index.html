@@ -11,6 +11,8 @@
     <script type='text/javascript'
             src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' 
             async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="235879741882-qdc979ng4v37gme3hfcjmga3onl3s5k3.apps.googleusercontent.com">
     <script src="script.js"></script>
 </head>
 <body>
@@ -19,6 +21,7 @@
             <a id="place_name" style="font-size: 0.9em;">India</a>
             <a id="cordinates"style="font-size: small;"></a>
         </div>
+    <div class="g-signin2" data-onsuccess="onSignIn" style="margin: 20px;"></div>
     </nav>
     <div class="map-holder">
         <div id="plotMap" class="map"></div>
