@@ -84,6 +84,9 @@ function createHeatmap(content){
   var loc = [];
   var pins = [];
 
+  //clear source list
+  source_list.innerHTML = ""
+
   //clear pushpins
   for (var i = map.entities.getLength() - 1; i >= 0; i--) {
     var pushpin = map.entities.get(i);
@@ -100,15 +103,9 @@ function createHeatmap(content){
   }
   else{
     heat_data = [json_data[source_index[content]]]
-
     //create source logo object to indicate selected source
     const link_list_item = document.getElementById('news_list');
     link_list_item.innerHTML = "";
-
-    // const source_list_item = document.getElementById('source_list');
-    // source_list_item.innerHTML = "";
-    // source_list_item.innerHTML += loc_logo_template.replace('{image-url}',heat_data[0]['image'])
-    //   .replace('{onclick-data-ref}',null) 
   }
 
   //create heat data
@@ -231,7 +228,7 @@ function updateLinkMenu(self,data_ref){
   query = '?'
   query += 'source=' + source + '&loc='  + place.toLowerCase()
   if (history.pushState) {
-    var newurl = window.location.origin + query;
+    var newurl = window.location.origin + window.location.pathname + query;
     window.history.pushState({path:newurl},'',newurl);
   }
 }
