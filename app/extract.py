@@ -9,7 +9,7 @@ import datetime as dt
 geolocator = Nominatim(user_agent="extractor")
 
 places = []
-with open('places.json', 'r') as js:
+with open('./data/places.json', 'r') as js:
     places = json.load(js)
 
 def replaceMultiple(string, replace=[], replaceWith=''):
