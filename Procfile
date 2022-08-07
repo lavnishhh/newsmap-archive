@@ -1,1 +1,1 @@
-worker: /app/python main.py
+worker: hello.py
