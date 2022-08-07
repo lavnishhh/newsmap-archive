@@ -1,6 +1,6 @@
 print('importing libraries')
 import json
-import extract
+import extract as extract
 import time as t
 print('imported libraries')
 
