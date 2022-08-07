@@ -36,8 +36,6 @@ def update_data(sources):
 
 ti = t.time()
 
-update_data(source_in)
-
 print(t.time()-ti)
 
 geolocator = Nominatim(user_agent="extractor")
@@ -389,3 +387,6 @@ def cnbc():
                 addData(data, place, link, title, image)
                 break
     return data
+
+
+update_data(source_in)
