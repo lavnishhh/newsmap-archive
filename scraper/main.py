@@ -9,8 +9,11 @@ import json
 import datetime as dt
 print('imported libraries')
 
+bin_url = 'https://www.npoint.io/documents/8c51b74160cbbace14b4'
+
+#req = requests.push(url,json=js,headers=headers)
 source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','zee','timnow']
-#source_in = ['inexp']
+
 #rw time
 with open('data/data.json', 'r') as j:
      json_inp = json.loads(j.read())
@@ -21,18 +24,19 @@ def update_data(sources):
     for source in json_inp:
         source_index[source['source_tag']] = ind
         ind+=1
+    
     for source_id in sources:
-       so_t = t.time()
-       print('started '+source_id)
-       if(source_id in source_index):
-           json_inp[source_index[source_id]] = globals()[source_id]()
-       else:
-           json_inp.append(globals()[source_id]())
-       print('finished '+source_id)
-       print(t.time() - so_t)
+        so_t = t.time()
+        print('started '+source_id)
+        if(source_id in source_index):
+            json_inp[source_index[source_id]] = globals()[source_id]()
+        else:
+            json_inp.append(globals()[source_id]())
+        print('finished '+source_id)
+        print(t.time() - so_t)
 
-       with open('data/data.json', 'w') as jso:
-               json.dump(json_inp,jso,indent=3)
+        with open('data/data.json', 'w') as jso:
+                json.dump(json_inp,jso,indent=3)
 
 ti = t.time()
 
@@ -50,6 +54,7 @@ def replaceMultiple(string, replace=[], replaceWith=''):
     return string
 
 abbrevated_places = {'UP':"Uttar Pradesh",'MP':"Madhya Pradesh",'TN':"Tamil Nadu",'UK':'Uttarakhand',"uttar-pradesh":"Uttar Pradesh","madhya-pradesh":"Madhya Pradesh"}
+
 def addData(data, place, link, title, image):
     data['count']+=1
     if(place not in data['data']):
@@ -387,6 +392,5 @@ def cnbc():
                 addData(data, place, link, title, image)
                 break
     return data
-
 
 update_data(source_in)
