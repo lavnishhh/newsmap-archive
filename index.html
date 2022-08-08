@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Newsmap</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' 
+            async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="javascript/google.js"></script>
+    <script src="javascript/map.js"></script>
+</head>
+<body>
+    <div class="message" style="display: none;" id="signOutBox">
+        <h1>Sign out?</h1>
+        <div class="yn">
+            <div style="color: hsl(0, 100%, 70%);" id="signOutButton">Sign out</div>
+            <div id="cancelButton">Nah,nvm</div>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="place-data">
+            <a id="place_name" style="font-size: 0.9em;">India</a>
+            <a id="cordinates"style="font-size: small;"></a>
+        </div>
+        <div class="account" style="text-align: center; padding-right: 20px; padding-top: 20px;" id="googleSignInButton">
+            <div id="g_id_onload"
+                data-client_id="235879741882-7jnpbc2mhv8nrpdcoch40bk1h8cnvn1p.apps.googleusercontent.com"
+                data-context="signin"
+                data-ux_mode="popup"
+                data-callback="handleCredentialResponse"
+                data-auto_select="true"
+                data-close_on_tap_outside="false">
+            </div>
+
+            <div class="g_id_signin"
+                data-type="icon"
+                data-shape="circle"
+                data-theme="outline"
+                data-text="signin_with"
+                data-size="large">
+            </div>
+        </div>
+    </nav>
+    <div class="map-holder">
+        <div id="plotMap" class="map"></div>
+        <div id="toolbar" class="toolbar">
+            <div id="source-type" class="source-type">
+                <div id="sources-info" class="sources-info">
+                    <div onclick="createHeatmap();" class="source-logo" tabindex="-1" style="background-image: url(https://fvmstatic.s3.amazonaws.com/maps/m/IN-EPS-01-0001.png);"></div>
+                </div>
+            </div>
+            <div id='loc-type' class='loc-type'>
+              <div id="source_list" class="source-list">
+                <div class="source-logo" id="temp_logo"></div>
+                </div>
+                <div id="news_list" class="news-list">
+                </div>  
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
