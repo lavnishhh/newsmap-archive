@@ -9,7 +9,7 @@ function handleCredentialResponse(response) {
   }
 
 
-function createButton() {
+function createSignIn() {
     google.accounts.id.initialize({
         client_id: "235879741882-7jnpbc2mhv8nrpdcoch40bk1h8cnvn1p.apps.googleusercontent.com",
         callback: handleCredentialResponse

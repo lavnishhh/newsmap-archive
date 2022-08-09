@@ -15,7 +15,7 @@ if(query.get('loc')){
 }
 async function fetchData() {
 
-  const response = await fetch('https://api.npoint.io/2eaf4602452f32da3700');
+  const response = await fetch('https://api.npoint.io/d45deb15252bacd419f4');
   json_data = await response.json();
   var index = 0
   var sources_info = document.getElementById('sources-info')
@@ -25,6 +25,35 @@ async function fetchData() {
       source_index[source.source_tag] = index;
       index += 1;
   });
+
+
+  //load map
+  var mapZoom = 5
+  if(screen.width <= 810){
+    mapZoom = 4
+  }
+
+  map = new window.Microsoft.Maps.Map('#plotMap', {
+    credentials: 'Asmd15OlhpdjArghMT1ycEvtCYiXMkL2Syp3DO0xxafdxG5JyWEURj2hCxmLNy3s',
+    center: new window.Microsoft.Maps.Location(23.5, 83),
+    maxZoom: 6,
+    minZoom: 4,
+    zoom: mapZoom,
+    enableDrag:false,
+    showMapTypeSelector: false,
+    enableSearchLogo: false,
+    enableClickableLogo: false,
+    showMapTypeSelector: false,
+    showDashboard: false,
+    disableUserInput: false,
+    showMapLabels: false,
+    customMapStyle: hiddenCityLabels
+  });
+  map.setOptions({
+    maxBounds: map.getBounds(),
+  });
+
+  createSignIn()
 
   //create heatmap after data is retreived
   createHeatmap(query_source)
@@ -52,34 +81,6 @@ var hiddenCityLabels = {
   }
 };
 var query;
-window.onload = function() {
-  var mapZoom = 5
-  if(screen.width <= 810){
-    mapZoom = 4
-  }
-
-  map = new window.Microsoft.Maps.Map('#plotMap', {
-    credentials: 'Asmd15OlhpdjArghMT1ycEvtCYiXMkL2Syp3DO0xxafdxG5JyWEURj2hCxmLNy3s',
-    center: new window.Microsoft.Maps.Location(23.5, 83),
-    maxZoom: 6,
-    minZoom: 4,
-    zoom: mapZoom,
-    enableDrag:false,
-    showMapTypeSelector: false,
-    enableSearchLogo: false,
-    enableClickableLogo: false,
-    showMapTypeSelector: false,
-    showDashboard: false,
-    disableUserInput: false,
-    showMapLabels: false,
-    customMapStyle: hiddenCityLabels
-  });
-  map.setOptions({
-    maxBounds: map.getBounds(),
-  });
-
-  createButton()
-}
 
 function createHeatmap(content){
   var loc = [];
