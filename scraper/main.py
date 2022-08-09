@@ -41,6 +41,7 @@ def update_data(sources):
         # with open('data/data.json', 'w') as jso:
         #         json.dump(json_inp,jso,indent=3)
     requests.post(bin_url,json=json_inp,headers=headers)
+    print("exclude:",exclude)
 
 ti = t.time()
 
