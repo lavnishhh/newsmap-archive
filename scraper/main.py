@@ -36,7 +36,9 @@ def update_data(sources):
         except:
             exclude.append(source_id)
             source_in.remove(source_id)
+            errors.append({source_id:str(e)})
         print(exclude, source_in)
+        print(errors)
         # with open('data/data.json', 'w') as jso:
         #         json.dump(json_inp,jso,indent=3)
     requests.post(bin_url,json=json_inp,headers=headers)
