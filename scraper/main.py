@@ -9,14 +9,15 @@ import json
 import datetime as dt
 print('imported libraries')
 
-bin_url = 'https://www.npoint.io/documents/8c51b74160cbbace14b4'
+bin_url = 'https://api.npoint.io/d45deb15252bacd419f4'
 
 #req = requests.push(url,json=js,headers=headers)
 source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','zee','timnow']
-
+source_in = ['ht']
+headers = {'Authorization': 'Bearer bGjA3p4KBVY4eeBaGkyRJDNN'}
 #rw time
-with open('data/data.json', 'r') as j:
-     json_inp = json.loads(j.read())
+
+json_inp = requests.get('https://api.npoint.io/d45deb15252bacd419f4').json()
 
 def update_data(sources):
     source_index = {}
@@ -35,8 +36,9 @@ def update_data(sources):
         print('finished '+source_id)
         print(t.time() - so_t)
 
-        with open('data/data.json', 'w') as jso:
-                json.dump(json_inp,jso,indent=3)
+        # with open('data/data.json', 'w') as jso:
+        #         json.dump(json_inp,jso,indent=3)
+    requests.post(bin_url,json=json_inp,headers=headers)
 
 ti = t.time()
 
@@ -251,6 +253,7 @@ def ndtv():
             if(loc in places):
                 addData(data, loc, link, title, image)
                 data['count']+=1
+                continue
             
     return data
 
@@ -272,6 +275,7 @@ def ht():
             image = news.select_one('figure > span > a > img')['src']
             #upload time
             ti = replaceMultiple(news.find("div", class_= "dateTime").text, ["IST", "Published", "Updated", "on",","]).split(" ")[2:7]
+            print(ti)
             #ti -> [Mon, DD, YYYY, HH:MM, AM/PM]
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(" ".join(ti), "%b %d %Y %I:%M %p")):
                 return data
