@@ -206,7 +206,7 @@ def abp():
             title = article.find('a')['title']
             image = article.find('img')['data-src']
             doc_cont = bs(requests.get(link).content, 'html.parser').select_one('p.article-author').text[5:]
-            time = doc_cont[doc_cont.index(':')+2:doc_cont.index('(')-1]
+            time = doc_cont[doc_cont.index(':')+2:doc_cont.rindex('(')-1]
             if(dt.datetime.now()-dt.timedelta(days=1)>dt.datetime.strptime(time, "%d %b %Y %I:%M %p")):
                 return data
             for place in places:
