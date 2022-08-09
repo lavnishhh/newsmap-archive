@@ -401,5 +401,5 @@ def cnbc():
 
 while True:
     update_data(source_in)
-    print("sleeping for 2 minutes")
-    t.sleep(120)
+    print("sleeping for 7 minutes")
+    t.sleep(420)
