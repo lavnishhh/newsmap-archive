@@ -13,7 +13,7 @@ bin_url = 'https://api.npoint.io/d45deb15252bacd419f4'
 
 #req = requests.push(url,json=js,headers=headers)
 source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','zee','timnow']
-
+exclude = []
 headers = {'Authorization': 'Bearer bGjA3p4KBVY4eeBaGkyRJDNN'}
 #rw time
 
@@ -27,15 +27,17 @@ def update_data(sources):
         ind+=1
     
     for source_id in sources:
-        so_t = t.time()
-        print('started '+source_id)
-        if(source_id in source_index):
-            json_inp[source_index[source_id]] = globals()[source_id]()
-        else:
-            json_inp.append(globals()[source_id]())
-        print('finished '+source_id)
-        print(t.time() - so_t)
-
+        try:
+            so_t = t.time()
+            print('started '+source_id)
+            if(source_id in source_index):
+                json_inp[source_index[source_id]] = globals()[source_id]()
+            else:
+                json_inp.append(globals()[source_id]())
+            print('finished '+source_id + ' in ' + t.time() - so_t + ' seconds')
+        except:
+            exculde.append(source_id)
+            source_in.remove(source_id)
         # with open('data/data.json', 'w') as jso:
         #         json.dump(json_inp,jso,indent=3)
     requests.post(bin_url,json=json_inp,headers=headers)
