@@ -13,7 +13,6 @@ bin_url = 'https://api.npoint.io/d45deb15252bacd419f4'
 
 #req = requests.push(url,json=js,headers=headers)
 source_in = ['ndtv','ht','inexp','rw','abp','idto','news18','et','zee','timnow']
-source_in=['abp']
 exclude = []
 headers = {'Authorization': 'Bearer bGjA3p4KBVY4eeBaGkyRJDNN'}
 #rw time
