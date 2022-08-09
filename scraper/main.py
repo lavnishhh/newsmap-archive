@@ -396,4 +396,7 @@ def cnbc():
                 break
     return data
 
-update_data(source_in)
+while True:
+    update_data(source_in)
+    print("sleeping for 2 minutes")
+    t.sleep(120)
