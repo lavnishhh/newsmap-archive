@@ -36,7 +36,7 @@ def update_data(sources):
                 json_inp.append(globals()[source_id]())
             print('finished '+source_id + ' in ' + t.time() - so_t + ' seconds')
         except:
-            exculde.append(source_id)
+            exclude.append(source_id)
             source_in.remove(source_id)
         # with open('data/data.json', 'w') as jso:
         #         json.dump(json_inp,jso,indent=3)
