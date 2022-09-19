@@ -7,4 +7,5 @@ Python scraper is set up on [heroku](https://www.heroku.com/),which accesses and
 
 Further, the website is set up on github that accesses the data stored on [npoint](https://www.npoint.io/) to plot an ineractive heatmap based on number of articles published for a location.
 
-![image](https://user-images.githubusercontent.com/82657384/183978336-06c25c74-cb4e-4c25-ab37-9869aefa66b6.png)
+![image](https://user-images.githubusercontent.com/82657384/191116151-3a2042c7-edac-49c3-ab03-437186ec7a7c.png)
+
