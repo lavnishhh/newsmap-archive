@@ -209,6 +209,10 @@ html,body{
     margin: 10px 10px 0px 10px;
     border-radius: 20px;
 }
+
+.sources-info > div > .source-logo{
+    margin-left: 4px;
+}
  
 .source-logo{
     background-color: white;
@@ -220,14 +224,11 @@ html,body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    flex-shrink: 0
+    flex-shrink: 0;
+    transition: border-color 0.2s ease-in-out;
 }
 
 .source-logo:hover{
-    border: 5px solid rgb(166, 166, 166);
-}
-
-.source-logo:focus{
     border: 5px solid rgb(166, 166, 166);
 }
 

@@ -1,38 +1,111 @@
 var json_data
 var pins = {};
+var places = [];
 var news_sources = {}
-var source_index = {}
+var source_index = {'all': 0}
+var sources_info;
 
 const source_logo_template =
 `<div>
-  <div onclick="createHeatmap({onclick-data-ref})" style="background-image: url({image-url});" tabindex="-1" class="source-logo"></div>
+  <div onclick="createHeatmap(event)" style="background-image: url({image-url});" tabindex="-1" class="source-logo" sourceid="{source-id}"></div>
 </div>`
 
+const loc_dropdown_item = 
+`<div class="menu-item" locid="{place}">{place}</div>`
+
+const source_dropdown_item = 
+`<div class="menu-item" sourceid="{source-id}">{source}</div>`
+var query_loc = ''
 var query = new URLSearchParams(window.location.search)
 var query_source = query.get('source')
+
+previous_selcted_map_source = null;
+
+//var query_source_logo = document.getElementById('source-logo
+
 if(query.get('loc')){
-  var query_loc = capitalize(query.get('loc'))
+  query_loc = capitalize(query.get('loc'))
 }
 async function fetchData() {
-
   const response = await fetch('https://api.npoint.io/d45deb15252bacd419f4');
   json_data = await response.json();
-  var index = 0
-  var sources_info = document.getElementById('sources-info')
+  var index = 1
+  sources_info = document.getElementById('sources-info')
+
+  dropdown_menu_place = document.getElementById('loc-search-menu');
+  dropdown_menu_source = document.getElementById('source-search-menu');
+
   json_data.forEach(source => {
-      sources_info.innerHTML += source_logo_template.replace('{image-url}',source.image).replace('{onclick-data-ref}',"'" + source.source_tag + "'")
+      sources_info.innerHTML += source_logo_template.replace('{image-url}',source.image).replace('{source-id}', source.source_tag)
       news_sources[source.source_tag] = {'source-tag':source['source_tag'], 'image-url':source['image']};
       source_index[source.source_tag] = index;
       index += 1;
+
+      dropdown_menu_source.innerHTML += source_dropdown_item.replace('{source}',source['name']).replace('{source-id}',source.source_tag)
+
+      for(const [place, data] of Object.entries(source.data)){
+        if(!places.includes(place)){
+          places.push(place);
+        }
+      }
   });
 
+  for(var i=0;i<dropdown_menu_source.children.length;i++){
+    dropdown_menu_source.children[i].addEventListener('click',(event)=>{
+      createHeatmap({target:document.getElementById('sources-info').children[source_index[event.target.getAttribute('sourceid')]].children[0]})
+      for(var i=0;i<dropdown_menu_source.children.length;i++){
+        dropdown_menu_source.children[i].classList.remove('menu-item-selected');
+      }
+      event.target.classList.add('menu-item-selected');
+    })
+  }
 
-  //load map
+  places.sort();
+  places.forEach((pl)=>{
+    dropdown_menu_place.innerHTML += loc_dropdown_item.replaceAll('{place}',pl,2)
+  })
+
+  for(var i=0;i<dropdown_menu_place.children.length;i++){
+    dropdown_menu_place.children[i].addEventListener('click',(event)=>{
+      for(var i=0;i<dropdown_menu_place.children.length;i++){
+        dropdown_menu_place.children[i].classList.remove('menu-item-selected');
+      }
+      event.target.classList.add('menu-item-selected');
+      for(const [place, data] of Object.entries(pins)){
+        if(place == event.target.getAttribute('locid')){
+          const dic = {
+            target:{
+              metadata:{
+                title: event.target.getAttribute('locid'),
+                cordinates: data.cordinates,
+                info: data.data
+              }
+            }
+          }
+          updateMenu(dic)
+        }
+      }
+    })
+  }
+
+  createSignIn()
+
+  //create heatmap after data is retreived
+  if(!query_source){
+    previous_selcted_map_source =document.getElementById('sources-info').children[0].children[0];
+    createHeatmap({target:document.getElementById('sources-info').children[0].children[0]})
+  }
+  else{
+    previous_selcted_map_source = document.getElementById('sources-info').children[source_index[query_source]].children[0];
+    createHeatmap({target:previous_selcted_map_source});
+  }
+}
+
+function initMap(){
   var mapZoom = 5
   if(screen.width <= 810){
     mapZoom = 4
   }
-
   map = new window.Microsoft.Maps.Map('#plotMap', {
     credentials: 'Asmd15OlhpdjArghMT1ycEvtCYiXMkL2Syp3DO0xxafdxG5JyWEURj2hCxmLNy3s',
     center: new window.Microsoft.Maps.Location(23.5, 83),
@@ -52,11 +125,6 @@ async function fetchData() {
   map.setOptions({
     maxBounds: map.getBounds(),
   });
-
-  createSignIn()
-
-  //create heatmap after data is retreived
-  createHeatmap(query_source)
 }
 
 fetchData();
@@ -80,14 +148,15 @@ var hiddenCityLabels = {
       },
   }
 };
-var query;
 
-function createHeatmap(content){
+
+function createHeatmap(event){
   var loc = [];
-  var pins = [];
+  pins = [];
 
-  //clear source list
+  //clear source list and news list
   source_list.innerHTML = ""
+  news_list.innerHTML = ''
 
   //clear pushpins
   for (var i = map.entities.getLength() - 1; i >= 0; i--) {
@@ -99,12 +168,20 @@ function createHeatmap(content){
 
   //clear heatMap
   map.layers.clear();
+  sourceid = event.target.getAttribute('sourceid');
 
-  if(!content){
+  previous_selcted_map_source.style.border = '5px solid rgb(255, 255, 255)'
+  event.target.style.border = '5px solid rgb(100,100,100)';
+  previous_selcted_map_source = event.target;
+
+  if(sourceid=='all'){
     heat_data = json_data
+    document.getElementById('source-search').textContent = "All"
   }
   else{
-    heat_data = [json_data[source_index[content]]]
+    heat_data = [json_data[source_index[sourceid]-1]]
+    document.getElementById('source-search').textContent = json_data[source_index[sourceid]-1].name;
+
     //create source logo object to indicate selected source
     const link_list_item = document.getElementById('news_list');
     link_list_item.innerHTML = "";
@@ -130,7 +207,6 @@ function createHeatmap(content){
 
   //create pushpoints from heat data
   for(const [place, data] of Object.entries(pins)){
-    
     if(place == query_loc){
       const dic = {
         target:{
@@ -141,7 +217,7 @@ function createHeatmap(content){
           }
         }
       }
-      updateMenu(dic,true)
+      updateMenu(dic)
     }
 
     var infobox_source_html = '{source-logo}'
@@ -181,8 +257,8 @@ function createHeatmap(content){
 });
 }
 const loc_logo_template = 
-`<div>
-  <div onclick="updateLinkMenu(this,{onclick-data-ref})" style="background-image: url({image-url});" tabindex="-1" class="source-logo"></div>
+`<div> 
+  <div onclick="updateLinkMenu(event)" style="background-image: url({image-url});" tabindex="-1" class="source-logo" sourceid="{source-id}" place="{place}"></div>
 </div>`
 
 const news_item_template = 
@@ -195,27 +271,38 @@ const news_item_template =
 <a href="{news-url}" target="_blank">{title}</a>
 </div>`
 
-function updateMenu(e,showLinks){
+//update news + location
+function updateMenu(e){
   if(e.target.metadata){
-
     place_name.textContent = e.target.metadata.title;
     cordinates.textContent = e.target.metadata.cordinates[0] + ", " + e.target.metadata.cordinates[1];
-
     source_list.innerHTML = '' 
-    updateLinkMenu(null,Object.keys(e.target.metadata.info)[0]+ '-' +e.target.metadata.title)
+
+    document.getElementById("loc-search").textContent = e.target.metadata.title;
+
     for(const [source, links] of Object.entries(e.target.metadata.info)){
       source_list.innerHTML += loc_logo_template.replace('{image-url}',news_sources[source]['image-url'])
-      .replace('{onclick-data-ref}',"'" + source + '-' + e.target.metadata.title  + "'") 
+      .replace('{source-id}',source).replace('{place}', e.target.metadata.title) 
     }
+    previous_selcted_source = source_list.firstChild.children[0];
+    updateLinkMenu({target:source_list.firstChild.children[0]})
   }
 }
+var previous_selcted_source;
+//update news
+function updateLinkMenu(event){
 
-function updateLinkMenu(self,data_ref){
+  source = event.target.getAttribute('sourceid')
+  place= event.target.getAttribute('place')
+
+
+  previous_selcted_source.style.border = '5px solid rgb(255, 255, 255)'
+
+  previous_selcted_source = event.target;
+  event.target.style.border = '5px solid rgb(100,100,100)'
   news_list.innerHTML = "";
-  if(!data_ref){return;}
-  source = data_ref.split('-')[0]
-  place = data_ref.split('-')[1]
-  json_data[source_index[source]].data[place].links.forEach(link_data => {
+  if(!source){return;}
+  json_data[source_index[source]-1].data[place].links.forEach(link_data => {
     var title= link_data.title
     if(title.length > 65 && screen.width<770){
       title = title.substring(0,65) + '. . .'
