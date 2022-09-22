@@ -47,7 +47,7 @@ document.getElementById('loc-search').addEventListener('focusin',() => {
     document.getElementById('loc-search-menu').style.display = 'block';
     document.getElementById('loc-search-menu').style.opacity = 1;
     document.addEventListener('keydown',(key) => {
-        console.log(key.key)
+        
     })
 });
 
@@ -70,3 +70,7 @@ document.getElementById('source-search').addEventListener('focusout', () => {
         document.getElementById('source-search-menu').style.display = 'none';
     })
 });
+
+//query = '?source=' + source + '&loc='  + place.toLowerCase()
+// var newurl = window.location.origin + window.location.pathname + query;
+//           window.history.pushState({path:newurl},'',newurl);

@@ -19,6 +19,8 @@ var query_loc = ''
 var query = new URLSearchParams(window.location.search)
 var query_source = query.get('source')
 
+window.history.pushState({}, document.title, window.location.pathname);
+
 previous_selcted_map_source = null;
 
 //var query_source_logo = document.getElementById('source-logo
@@ -61,6 +63,7 @@ async function fetchData() {
   }
 
   places.sort();
+  places.unshift("None")
   places.forEach((pl)=>{
     dropdown_menu_place.innerHTML += loc_dropdown_item.replaceAll('{place}',pl,2)
   })
@@ -71,6 +74,18 @@ async function fetchData() {
         dropdown_menu_place.children[i].classList.remove('menu-item-selected');
       }
       event.target.classList.add('menu-item-selected');
+
+      if(event.target.getAttribute('locid') == "None"){
+        source_list.innerHTML = ''; 
+        news_list.innerHTML = '';
+        document.getElementById("loc-search").textContent = "None"
+        query = '?source=' + query_source;
+        if (history.pushState) {
+          var newurl = window.location.origin + window.location.pathname + query;
+          window.history.pushState({path:newurl},'',newurl);
+        }
+      }
+
       for(const [place, data] of Object.entries(pins)){
         if(place == event.target.getAttribute('locid')){
           const dic = {
@@ -238,11 +253,15 @@ function createHeatmap(event){
 
   }
 
+  rad =  50000
+  if(window.innerWidth < 700){
+    rad = 75000
+  }
   //create heatmap
   Microsoft.Maps.loadModule('Microsoft.Maps.HeatMap', function () {
     var heatmap = new Microsoft.Maps.HeatMapLayer(loc, {
         intensity: 0.1,
-        radius: 50000,
+        radius: rad,
         unit: 'meters', 
         colorGradient: {
             '0': 'Black',
@@ -292,8 +311,8 @@ var previous_selcted_source;
 //update news
 function updateLinkMenu(event){
 
-  source = event.target.getAttribute('sourceid')
-  place= event.target.getAttribute('place')
+  query_source = event.target.getAttribute('sourceid')
+  query_loc = event.target.getAttribute('place')
 
 
   previous_selcted_source.style.border = '5px solid rgb(255, 255, 255)'
@@ -301,8 +320,8 @@ function updateLinkMenu(event){
   previous_selcted_source = event.target;
   event.target.style.border = '5px solid rgb(100,100,100)'
   news_list.innerHTML = "";
-  if(!source){return;}
-  json_data[source_index[source]-1].data[place].links.forEach(link_data => {
+  if(!query_source){return;}
+  json_data[source_index[query_source]-1].data[query_loc].links.forEach(link_data => {
     var title= link_data.title
     if(title.length > 65 && screen.width<770){
       title = title.substring(0,65) + '. . .'
@@ -313,13 +332,6 @@ function updateLinkMenu(event){
     .replace('{image-url}',link_data.img)
     .replace('{title}',title)
   })
-
-  query = '?'
-  query += 'source=' + source + '&loc='  + place.toLowerCase()
-  if (history.pushState) {
-    var newurl = window.location.origin + window.location.pathname + query;
-    window.history.pushState({path:newurl},'',newurl);
-  }
 }
 
 function createNullPoint() {
@@ -341,23 +353,3 @@ function capitalize(place) {
   });  
   return final.join(' ');  
 } 
-// function collapseSwitch(self, collapseItemID1, collapseItemID2){
-//   var collapseItem1 = document.getElementById(collapseItemID1);
-//   var collapseItem2 = document.getElementById(collapseItemID2);
-//   if(collapseItem1.style.display == 'none'){
-//     collapseItem1.style.display = 'flex';
-//     collapseItem2.style.display = 'none';
-//   }
-//   else{
-//     collapseItem1.style.display = 'none';
-//     collapseItem2.style.display = 'flex';
-//   }
-//   if(self.classList.contains('arrow-open')){
-//     self.classList.remove('arrow-open')
-//     self.classList.add('arrow-close')
-//   }
-//   else{
-//     self.classList.remove('arrow-close')
-//     self.classList.add('arrow-open')
-//   }
-// }
