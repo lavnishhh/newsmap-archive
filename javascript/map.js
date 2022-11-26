@@ -5,10 +5,15 @@ var news_sources = {}
 var source_index = {'all': 0}
 var sources_info;
 
-const source_logo_template =
-`<div>
-  <div onclick="createHeatmap(event)" style="background-image: url({image-url});" tabindex="-1" class="source-logo" sourceid="{source-id}"></div>
-</div>`
+function sourceLogoTempelate(image,source_id){
+  const e = document.createElement('div')
+  e.style.backgroundImage = "url({image-url})".replace('{image-url}',image)
+  e.setAttribute('sourceid',source_id);
+  e.classList.add('source-logo');
+  f = document.createElement('div')
+  f.appendChild(e)
+  return f;
+}
 
 const loc_dropdown_item = 
 `<div class="menu-item" locid="{place}">{place}</div>`
@@ -38,7 +43,19 @@ async function fetchData() {
   dropdown_menu_source = document.getElementById('source-search-menu');
 
   json_data.forEach(source => {
-      sources_info.innerHTML += source_logo_template.replace('{image-url}',source.image).replace('{source-id}', source.source_tag)
+      sources_info.appendChild(sourceLogoTempelate(source.image, source.source_tag))
+
+      sources_info.lastChild.firstChild.addEventListener('mouseover', (event) => {
+        event.target.classList.add('source-logo-hover')
+      })
+  
+      sources_info.lastChild.firstChild.addEventListener('mouseout', (event) => {
+        event.target.classList.remove('source-logo-hover')
+      })
+  
+      sources_info.lastChild.firstChild.addEventListener('click', (event) => {
+        createHeatmap(event)
+      })
       news_sources[source.source_tag] = {'source-tag':source['source_tag'], 'image-url':source['image']};
       source_index[source.source_tag] = index;
       index += 1;
@@ -92,7 +109,7 @@ async function fetchData() {
             target:{
               metadata:{
                 title: event.target.getAttribute('locid'),
-                cordinates: data.cordinates,
+                coordinates: data.coordinates,
                 info: data.data
               }
             }
@@ -185,8 +202,9 @@ function createHeatmap(event){
   map.layers.clear();
   sourceid = event.target.getAttribute('sourceid');
 
-  previous_selcted_map_source.style.border = '5px solid rgb(255, 255, 255)'
-  event.target.style.border = '5px solid rgb(100,100,100)';
+  previous_selcted_map_source.classList.remove('source-logo-selected');
+  event.target.classList.add('source-logo-selected')
+  
   previous_selcted_map_source = event.target;
 
   if(sourceid=='all'){
@@ -207,7 +225,7 @@ function createHeatmap(event){
     for(const [place, data] of Object.entries(source.data)){
       if(!(place in pins)){
         pins[place] = {}
-        pins[place]['cordinates'] = [data.cordinates[1], data.cordinates[0]]
+        pins[place]['coordinates'] = [data.coordinates[0], data.coordinates[1]]
         pins[place]['data'] = {}
         pins[place]['data'][source.source_tag] = data.links
       }
@@ -215,7 +233,7 @@ function createHeatmap(event){
         pins[place]['data'][source.source_tag] = data.links
       }
       for(let i = 0; i < data.count; i++){
-        loc.push(new Microsoft.Maps.Location(data.cordinates[1], data.cordinates[0]))
+        loc.push(new Microsoft.Maps.Location(data.coordinates[0], data.coordinates[1]))
       }
     }
   });
@@ -227,7 +245,7 @@ function createHeatmap(event){
         target:{
           metadata:{
             title: query_loc,
-            cordinates: data.cordinates,
+            coordinates: data.coordinates,
             info: data.data
           }
         }
@@ -239,12 +257,12 @@ function createHeatmap(event){
     for(const [source, links] of Object.entries(data.data)){
       infobox_source_html = infobox_source_html.replace('{source-logo}',loc_logo_template).replace('{image-url}',news_sources[source]['image-url'])
     }
-    var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(data.cordinates[0], data.cordinates[1]),{
+    var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(data.coordinates[0], data.coordinates[1]),{
       icon: createNullPoint()
     });
     pushpin.metadata = {
       title: place,
-      cordinates: data.cordinates,
+      coordinates: data.coordinates,
       info: data.data
     }
     map.entities.push(pushpin);
@@ -290,18 +308,37 @@ const news_item_template =
 <a href="{news-url}" target="_blank">{title}</a>
 </div>`
 
+function sourceLocLogoTempelate(image,source_id,place){
+  e = document.createElement('div')
+  e.style.backgroundImage = "url({image-url})".replace('{image-url}',image)
+  e.setAttribute('sourceid',source_id);
+  e.setAttribute('place',place);
+  e.classList.add('source-logo');
+  e.addEventListener('click',(event)=>{
+    updateLinkMenu(event)
+  })
+  e.addEventListener('mouseover',(event)=>{
+    event.target.classList.add('source-logo-hover');
+  })
+  e.addEventListener('mouseout',(event)=>{
+    event.target.classList.remove('source-logo-hover');
+  })
+  f = document.createElement('div')
+  f.appendChild(e)
+  return f;
+}
+
 //update news + location
 function updateMenu(e){
   if(e.target.metadata){
     place_name.textContent = e.target.metadata.title;
-    cordinates.textContent = e.target.metadata.cordinates[0] + ", " + e.target.metadata.cordinates[1];
+    coordinates.textContent = e.target.metadata.coordinates[0] + ", " + e.target.metadata.coordinates[1];
     source_list.innerHTML = '' 
 
     document.getElementById("loc-search").textContent = e.target.metadata.title;
 
     for(const [source, links] of Object.entries(e.target.metadata.info)){
-      source_list.innerHTML += loc_logo_template.replace('{image-url}',news_sources[source]['image-url'])
-      .replace('{source-id}',source).replace('{place}', e.target.metadata.title) 
+      source_list.appendChild(sourceLocLogoTempelate(news_sources[source]['image-url'], source, e.target.metadata.title))
     }
     previous_selcted_source = source_list.firstChild.children[0];
     updateLinkMenu({target:source_list.firstChild.children[0]})
@@ -315,10 +352,10 @@ function updateLinkMenu(event){
   query_loc = event.target.getAttribute('place')
 
 
-  previous_selcted_source.style.border = '5px solid rgb(255, 255, 255)'
+  previous_selcted_source.classList.remove('source-logo-selected')
 
   previous_selcted_source = event.target;
-  event.target.style.border = '5px solid rgb(100,100,100)'
+  event.target.classList.add('source-logo-selected')
   news_list.innerHTML = "";
   if(!query_source){return;}
   json_data[source_index[query_source]-1].data[query_loc].links.forEach(link_data => {
