@@ -332,7 +332,7 @@ function sourceLocLogoTempelate(image,source_id,place){
 function updateMenu(e){
   if(e.target.metadata){
     place_name.textContent = e.target.metadata.title;
-    coordinates.textContent = e.target.metadata.coordinates[0] + ", " + e.target.metadata.coordinates[1];
+    cordinates.textContent = e.target.metadata.coordinates[0] + ", " + e.target.metadata.coordinates[1];
     source_list.innerHTML = '' 
 
     document.getElementById("loc-search").textContent = e.target.metadata.title;
@@ -366,7 +366,7 @@ function updateLinkMenu(event){
     news_list.innerHTML += news_item_template
     .replace('{news-url}',link_data.url)
     .replace('{news-url}',link_data.url)
-    .replace('{image-url}',link_data.img)
+    .replace('{image-url}',link_data.image)
     .replace('{title}',title)
   })
 }
